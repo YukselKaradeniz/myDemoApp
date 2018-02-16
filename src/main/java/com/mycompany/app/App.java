@@ -1,15 +1,13 @@
 package com.mycompany.app;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.post;
+import spark.ModelAndView;
+import spark.template.mustache.MustacheTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import spark.ModelAndView;
-import spark.template.mustache.MustacheTemplateEngine;
+import static spark.Spark.*;
 
 public class App
 {
@@ -21,6 +19,40 @@ public class App
             if (elt == e) return true;
         }
         return false;
+    }
+
+    public static ArrayList<Integer> newSearch(ArrayList<Integer> sayi1,ArrayList<Integer> sayi2,ArrayList<Integer> sayi3,int sayi4){
+        for(int i = 0;i<sayi1.size();i++){
+            if(sayi1.get(i)<sayi4)
+                sayi3.add(sayi1.get(i));
+        }
+        for(int i = 0;i<sayi2.size();i++){
+            if(sayi2.get(i)<sayi4)
+                sayi3.add(sayi2.get(i));
+        }
+        int[] array = new int[sayi3.size()];
+        for(int i = 0;i<sayi3.size();i++){
+            array[i] = sayi3.get(i);
+        }
+        bubbleSort(array);
+        sayi3.clear();
+        for(int i = 0;i<sayi3.size();i++){
+            sayi3.add(array[i]);
+        }
+
+        return sayi3;
+
+    }
+
+    public static void bubbleSort(int[] array) {
+        for(int i = 0;i<array.length-1;i++){
+            if(array[i]>array[i+1]){
+                int temp = array[i];
+                array[i]= array[i+1];
+                array[i+1] = temp;
+            }
+
+        }
     }
 
     public static void main(String[] args) {
