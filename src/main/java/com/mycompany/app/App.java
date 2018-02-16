@@ -21,7 +21,7 @@ public class App
         return false;
     }
 
-    public static ArrayList<Integer> newSearch(ArrayList<Integer> sayi1,ArrayList<Integer> sayi2,ArrayList<Integer> sayi3,int sayi4){
+    public static boolean newSearch(ArrayList<Integer> sayi1,ArrayList<Integer> sayi2,ArrayList<Integer> sayi3,int sayi4){
         for(int i = 0;i<sayi1.size();i++){
             if(sayi1.get(i)<sayi4)
                 sayi3.add(sayi1.get(i));
@@ -38,10 +38,10 @@ public class App
         sayi3.clear();
         for(int i = 0;i<sayi3.size();i++){
             sayi3.add(array[i]);
+            System.out.print(array[i]);
         }
 
-        return sayi3;
-
+        return true ;
     }
 
     public static void bubbleSort(int[] array) {
@@ -51,7 +51,6 @@ public class App
                 array[i]= array[i+1];
                 array[i+1] = temp;
             }
-            System.out.print("");
 
         }
     }
@@ -73,13 +72,35 @@ public class App
                 int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
                 inputList.add(value);
             }
+
+            String input11 = req.queryParams("input11");
+            java.util.Scanner sc11 = new java.util.Scanner(input1);
+            sc11.useDelimiter("[;\r\n]+");
+            java.util.ArrayList<Integer> inputList1 = new java.util.ArrayList<>();
+            while (sc11.hasNext())
+            {
+                int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+                inputList1.add(value);
+            }
+
+            String input111 = req.queryParams("input111");
+            java.util.Scanner sc111 = new java.util.Scanner(input1);
+            sc111.useDelimiter("[;\r\n]+");
+            java.util.ArrayList<Integer> inputList11 = new java.util.ArrayList<>();
+            while (sc111.hasNext())
+            {
+                int value = Integer.parseInt(sc111.next().replaceAll("\\s",""));
+                inputList11.add(value);
+            }
+
+
             System.out.println(inputList);
 
 
             String input2 = req.queryParams("input2").replaceAll("\\s","");
             int input2AsInt = Integer.parseInt(input2);
 
-            boolean result = App.search(inputList, input2AsInt);
+            boolean result = App.newSearch(inputList,inputList1,inputList11, input2AsInt);
 
             Map map = new HashMap();
             map.put("result", result);
