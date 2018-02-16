@@ -51,6 +51,7 @@ public class App
                 array[i]= array[i+1];
                 array[i+1] = temp;
             }
+            System.out.print("");
 
         }
     }
