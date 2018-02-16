@@ -59,23 +59,23 @@ public class AppTest
       assertFalse(new App().search(null, 1));
     }
 
-    public static boolean shouldDoNothingWithOneElementArray() {
+    public static void shouldDoNothingWithOneElementArray() {
         boolean m = true;
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(null));
         ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(null));
         if(array.size()<=1 || array2.size()<=1)
             m= false;
 
-        return m;
+        assertEquals(true, m);
     }
-    public static boolean testEqualArraysLength() {
+    public static void testEqualArraysLength() {
          boolean m = true;
          ArrayList<Integer> array = new ArrayList<>(Arrays.asList(null));
          ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(null));
          if(array.size() != array2.size())
              m= false;
 
-         return m;
+        assertEquals(true, m );
 
     }
 
